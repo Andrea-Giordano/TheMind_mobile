@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 
 
 class CreateRoomDialog extends StatefulWidget {
-  final String title, description, roomCode;
+  final String description = "Share code";
+  String roomCode;
 
   final BuildContext mainContext;
 
   CreateRoomDialog({
-    @required this.title,
-    @required this.description,
     @required this.roomCode,
     @required this.mainContext,
   });
@@ -17,17 +16,16 @@ class CreateRoomDialog extends StatefulWidget {
   @override
   _CreateRoomDialogState createState() => _CreateRoomDialogState(
       description: description,
-      title: title,
+      roomCode: roomCode,
       mainContext: mainContext);
 }
 
 class _CreateRoomDialogState extends State<CreateRoomDialog> {
-  final String title, description, roomCode;
+  final String description, roomCode;
 
   final BuildContext mainContext;
 
   _CreateRoomDialogState({
-    @required this.title,
     @required this.description,
     @required this.roomCode,
     @required this.mainContext
@@ -84,20 +82,35 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                 ),
                 SizedBox(height:10),
                 Container(
-                  color: Colors.yellow,
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      color: Colors.indigo[900],
+                      border: Border.all(
+                          color: Colors.indigoAccent,
+                          width: 2
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                  width: 125,
+                  child:
+                   Text("XJ6RT",
+                   style: TextStyle(fontSize: 20, color: Colors.white, letterSpacing: 3.0, fontWeight: FontWeight.bold),
+                    textAlign:  TextAlign.center,
+                   )
                 ),
+                SizedBox(height: 20),
                 Container(
                   child:
                   ClipOval(
                     child: Material(
-                      color: Colors.orange, // button color
+                      color: Colors.transparent, // button color
                       child: InkWell(
-                        splashColor: Colors.green, // splash color
+                        splashColor: Colors.transparent, // splash color
                         onTap: () {}, // button pressed
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.share), // icon
+                            Icon(Icons.share, size: 55, color: Colors.white54,), // icon
                           ],
                         ),
                       ),

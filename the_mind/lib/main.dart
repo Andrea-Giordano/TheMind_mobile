@@ -155,17 +155,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _createNewRoomDialog(
-      {
-        title: "CREATE ROOM",
-        description: "Share the room code",
-      }) {
+  _createNewRoomDialog() {
     showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext context) => CreateRoomDialog(
-        title: title,
-        description: description,
         roomCode: "CODICE",
         mainContext: _appContext
       ),
