@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'com/kdev/themind/frontend/dialogs/CreateRoomDialog.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -33,17 +34,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<bool> isSelected;
-
-  @override
-  void initState() {
-    // this is for 3 buttons, add "false" same as the number of buttons here
-    isSelected = [true, false, false];
-    super.initState();
-  }
+  BuildContext _appContext;
 
   @override
   Widget build(BuildContext context) {
+    _appContext = context;
     return new Scaffold(
       body: Plasma(
         particles: 9,
@@ -74,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 200,
                   color: Colors.transparent,
                   child: RaisedButton(
+                    onPressed: () => {_createNewRoomDialog()},
                     child: Ink(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
@@ -98,7 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 200,
                   color: Colors.transparent,
                   child: RaisedButton(
-                    elevation: 10,
                     child: Ink(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
@@ -156,6 +151,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ]
           ),
         ), // your UI here
+      ),
+    );
+  }
+
+  _createNewRoomDialog(
+      {
+        title: "CREATE ROOM",
+        description: "Share the room code",
+      }) {
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) => CreateRoomDialog(
+        title: title,
+        description: description,
+        roomCode: "CODICE",
+        mainContext: _appContext
       ),
     );
   }
