@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'package:floating_action_row/floating_action_row.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -34,85 +33,130 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  List<bool> isSelected;
+
+  @override
+  void initState() {
+    // this is for 3 buttons, add "false" same as the number of buttons here
+    isSelected = [true, false, false];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Plasma(
-      particles: 9,
-      foregroundColor: Color(0xff000000),
-      backgroundColor: Color(0xff0c5dd7),
-      size: 1.00,
-      speed: 6.00,
-      offset: 0.00,
-      blendMode: BlendMode.hardLight,
-      child: Container(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              SizedBox(height: 40),
-              Container(
-                child: Image.asset("assets/title.png")
-              ),
-              Expanded(
-                child:
+    return new Scaffold(
+      body: Plasma(
+        particles: 9,
+        foregroundColor: Color(0xff000000),
+        backgroundColor: Color(0xff0c5dd7),
+        size: 1.00,
+        speed: 6.00,
+        offset: 0.00,
+        blendMode: BlendMode.hardLight,
+        child: Container(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                SizedBox(height: 30.0),
                 Container(
-                    child: Image.asset("assets/logo.png")
+                    child: Image.asset("assets/title.png")
                 ),
-              ),
-              SizedBox(height: 10),
-              Container(
+                Expanded(
                   child:
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-
-                      ]
+                  Container(
+                      child: Image.asset("assets/logo.png")
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                Container(
+                  width: 200,
+                  color: Colors.transparent,
+                  child: RaisedButton(
+                    child: Ink(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: <Color>[Colors.black54, Colors.indigoAccent],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                      ),
+                      child: Container(
+                        constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 40.0), // min sizes for Material buttons
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'CREATE ROOM',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16, color: Colors.white60, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
-              ),
-              Container(
-                  child: Text("Players")
-              ),
-              Container(
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                Container(
+                  width: 200,
+                  color: Colors.transparent,
+                  child: RaisedButton(
+                    elevation: 10,
+                    child: Ink(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: <Color>[Colors.black54, Colors.indigoAccent],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                      ),
+                      child: Container(
+                        constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 40.0), // min sizes for Material buttons
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'JOIN ROOM',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16, color: Colors.white60, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 200,
+                  height: 40,
                   child:
-                  FloatingActionRow(
-                    color: Colors.blueAccent,
-                    children: <Widget>[
-                      FloatingActionRowButton(
-                          icon: Icon(Icons.add),
-                          onTap: () {}
+                  new TextFormField(
+                    textAlign: TextAlign.center,
+                    onSaved: (String value) {
+                      // This optional block of code can be used to run
+                      // code when the user saves the form.
+                    },
+                    decoration: new InputDecoration(
+                      contentPadding: EdgeInsets.zero,
+                      hintText: "Room code",
+                      hintStyle: TextStyle(color: Colors.white60),
+                      fillColor: Colors.white,
+                      enabledBorder: const OutlineInputBorder(
+                        // width: 0.0 produces a thin "hairline" border
+                        borderSide: const BorderSide(color: Colors.indigoAccent, width: 2.0),
                       ),
-                      FloatingActionRowDivider(),
-                      FloatingActionRowButton(
-                          icon: Icon(Icons.arrow_forward),
-                          onTap: () {}
-                      ),
-                      FloatingActionRowDivider(),
-                      FloatingActionRowButton(
-                          icon: Icon(Icons.arrow_back),
-                          onTap: () {}
-                      ),
-                    ],
-                  )
-              ),
-              Container(
-                child: RaisedButton(
-                  onPressed: () async {},
-                  child: const Text('CREATE ROOM'),
+                    ),
+                    validator: (val) {
+                      if(val.length==0) {
+                        return "Cannot be empty";
+                      }else{
+                        return null;
+                      }
+                    },
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                child: RaisedButton(
-                  onPressed: () async {},
-                  child: const Text('JOIN ROOM'),
-                ),
-              ),
-            ]
-
-        ),
-      ), // your UI here
+                SizedBox(height: 10.0),
+              ]
+          ),
+        ), // your UI here
+      ),
     );
   }
 }

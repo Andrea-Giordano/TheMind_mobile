@@ -24,7 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   simple_animations: ^2.4.2
-  floating_action_row: ^0.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
