@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'package:the_mind/com/kdev/themind/AppColors.dart';
 import 'com/kdev/themind/frontend/dialogs/CreateRoomDialog.dart';
+import 'com/kdev/themind/frontend/dialogs/JoinRoomDialog.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -42,8 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       body: Plasma(
         particles: 9,
-        foregroundColor: Color(0xff000000),
-        backgroundColor: Color(0xff0c5dd7),
+        foregroundColor: AppColors.themeForeground,
+        backgroundColor: AppColors.themeBackground,
         size: 1.00,
         speed: 6.00,
         offset: 0.00,
@@ -54,15 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                SizedBox(height: 30.0),
-                Container(
-                    child: Image.asset("assets/title.png")
-                ),
+                SizedBox(height: 40.0),
+                Container(child: Image.asset("assets/title.png")),
                 Expanded(
-                  child:
-                  Container(
-                      child: Image.asset("assets/logo.png")
-                  ),
+                  child: Container(child: Image.asset("assets/logo.png")),
                 ),
                 SizedBox(height: 15.0),
                 Container(
@@ -73,7 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Ink(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: <Color>[Colors.black54, Colors.indigoAccent],
+                          colors: <Color>[
+                            AppColors.buttonGradient1,
+                            AppColors.buttonGradient2
+                          ],
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(80.0)),
                       ),
@@ -83,7 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text(
                           'CREATE ROOM',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16, color: Colors.white60, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: AppColors.whiteText,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -94,60 +97,33 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 200,
                   color: Colors.transparent,
                   child: RaisedButton(
+                    onPressed: () => {_joinRoomDialog()},
                     child: Ink(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: <Color>[Colors.black54, Colors.indigoAccent],
+                          colors: <Color>[
+                            AppColors.buttonGradient1,
+                            AppColors.buttonGradient2
+                          ],
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(80.0)),
                       ),
                       child: Container(
-                        constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 40.0), // min sizes for Material buttons
+                        constraints: const BoxConstraints(
+                            maxWidth: 200.0, minHeight: 40.0),
+                        // min sizes for Material buttons
                         alignment: Alignment.center,
                         child: const Text(
-                          'JOIN ROOM',
+                          'JOIN',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16, color: Colors.white60, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 16, color: AppColors
+                              .whiteText, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  width: 200,
-                  height: 40,
-                  child:
-                  new TextFormField(
-                    textAlign: TextAlign.center,
-                    onSaved: (String value) {
-                      // This optional block of code can be used to run
-                      // code when the user saves the form.
-                    },
-                    decoration: new InputDecoration(
-                      contentPadding: EdgeInsets.zero,
-                      hintText: "Room code",
-                      hintStyle: TextStyle(color: Colors.white60),
-                      fillColor: Colors.white,
-                      enabledBorder: const OutlineInputBorder(
-                        // width: 0.0 produces a thin "hairline" border
-                        borderSide: const BorderSide(color: Colors.indigoAccent, width: 2.0),
-                      ),
-                    ),
-                    validator: (val) {
-                      if(val.length==0) {
-                        return "Cannot be empty";
-                      }else{
-                        return null;
-                      }
-                    },
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 30),
               ]
           ),
         ), // your UI here
@@ -159,10 +135,22 @@ class _MyHomePageState extends State<MyHomePage> {
     showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) => CreateRoomDialog(
-        roomCode: "CODICE",
-        mainContext: _appContext
-      ),
+      builder: (BuildContext context) =>
+          CreateRoomDialog(
+              roomCode: "CODICE",
+              mainContext: _appContext
+          ),
+    );
+  }
+
+  _joinRoomDialog() {
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) =>
+          JoinRoomDialog(
+              mainContext: _appContext
+          ),
     );
   }
 }

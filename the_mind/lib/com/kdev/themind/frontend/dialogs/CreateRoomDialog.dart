@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-
+import 'package:the_mind/com/kdev/themind/AppColors.dart';
 
 class CreateRoomDialog extends StatefulWidget {
   final String description = "Share code";
@@ -38,15 +38,12 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
           onWillPop: () async => true,
           child: Dialog(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            elevation: 0.0,
-            backgroundColor:
-            (Theme.of(mainContext).brightness == Brightness.light)
-                ? Colors.white
-                : Theme.of(mainContext).backgroundColor,
-            child: dialogContent(context),
-          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        child: dialogContent(context),
+      ),
         );
   }
 
@@ -55,10 +52,10 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
       width: 300,
       height: 250,
         decoration: BoxDecoration(
-            color: Colors.indigo[900],
+            color: AppColors.dialogBackground,
             border: Border.all(
-              color: Colors.indigoAccent,
-              width: 2
+                color: AppColors.dialogBorder,
+                width: 2
             ),
             borderRadius: BorderRadius.all(Radius.circular(20))
         ),
@@ -78,24 +75,29 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                     child:
                     Text(
                         description,
-                        style: TextStyle(fontSize: 25, color: Colors.white60, fontWeight: FontWeight.bold))
+                        style: TextStyle(fontSize: 25,
+                            color: AppColors.whiteText,
+                            fontWeight: FontWeight.bold))
                 ),
                 SizedBox(height:10),
                 Container(
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                      color: Colors.indigo[900],
-                      border: Border.all(
-                          color: Colors.indigoAccent,
-                          width: 2
-                      ),
+                      color: AppColors.dialogForeground,
+                      //border: Border.all(
+                      //color: Colors.black,
+                      //width: 2
+                      //),
                       borderRadius: BorderRadius.all(Radius.circular(20))
                   ),
                   width: 125,
                   child:
                    Text("XJ6RT",
-                   style: TextStyle(fontSize: 20, color: Colors.white, letterSpacing: 3.0, fontWeight: FontWeight.bold),
-                    textAlign:  TextAlign.center,
+                     style: TextStyle(fontSize: 20,
+                         color: AppColors.whiteTextField,
+                         letterSpacing: 3.0,
+                         fontWeight: FontWeight.bold),
+                     textAlign: TextAlign.center,
                    )
                 ),
                 SizedBox(height: 20),
@@ -110,7 +112,8 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.share, size: 55, color: Colors.white54,), // icon
+                            Icon(Icons.share, size: 55, color: AppColors
+                                .whiteText), // icon
                           ],
                         ),
                       ),
@@ -123,5 +126,4 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
       )
     );
   }
-
 }
