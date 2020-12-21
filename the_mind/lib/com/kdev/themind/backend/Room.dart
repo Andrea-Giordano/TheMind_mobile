@@ -6,7 +6,7 @@ class Room {
   String _code;
 
   Room() {
-    this._code = _getUniqueCode();
+    this._code = getUniqueCode();
   }
 
   String get code => _code;
@@ -14,7 +14,7 @@ class Room {
   var _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
   Random _rnd = Random();
 
-  String _getUniqueCode() {
+  String getUniqueCode() {
     String randomCode = _getRandomString(5);
     while (Lobby.getRoomsCodes().contains(randomCode));
     return randomCode;

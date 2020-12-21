@@ -7,12 +7,11 @@ import 'package:the_mind/com/kdev/themind/Sizes.dart';
 
 class CreateRoomDialog extends StatefulWidget {
   final String description = "Share code";
-  String roomCode;
+  final String roomCode = "XJRT6F";
 
   final BuildContext mainContext;
 
   CreateRoomDialog({
-    @required this.roomCode,
     @required this.mainContext,
   });
 
@@ -81,7 +80,7 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                               Radius.circular(Sizes.buttonRoundness))),
                       width: 125,
                       child: Text(
-                        "XJ6RT",
+                        roomCode,
                         style: TextStyle(
                             fontSize: Fonts.dialogTextFieldFontSize,
                             color: AppColors.whiteTextField,

@@ -5,7 +5,7 @@ class AppColors {
 
   /// Colors
   static const Color dialogBackground = Colors.black38;
-  static Color buttonColor = Color(0xff0c5dd7).withOpacity(0.1);
+  static Color buttonColor = Color(0xff0c5dd7).withOpacity(0.5);
   static const Color dialogBorder = Colors.black38;
   static const Color textFieldBorder = Colors.white60;
 

@@ -3,6 +3,7 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:the_mind/com/kdev/themind/AppColors.dart';
 import 'package:the_mind/com/kdev/themind/Fonts.dart';
 import 'package:the_mind/com/kdev/themind/Sizes.dart';
+import 'package:the_mind/com/kdev/themind/Pictures.dart';
 
 import 'com/kdev/themind/frontend/dialogs/CreateRoomDialog.dart';
 import 'com/kdev/themind/frontend/dialogs/JoinRoomDialog.dart';
@@ -59,9 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 SizedBox(height: 40.0),
-                Container(child: Image.asset("assets/title.png")),
+                Container(child: Pictures.title),
                 Expanded(
-                  child: Container(child: Image.asset("assets/logo.png")),
+                  child: Container(child: Pictures.logo),
                 ),
                 SizedBox(height: 15.0),
                 RaisedButton(
@@ -119,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
       barrierDismissible: true,
       context: context,
       builder: (BuildContext context) =>
-          CreateRoomDialog(roomCode: "CODICE", mainContext: _appContext),
+          CreateRoomDialog(mainContext: _appContext),
     );
   }
 
