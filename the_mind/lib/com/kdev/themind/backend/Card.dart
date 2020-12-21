@@ -1,7 +1,6 @@
 import 'Scan.dart';
 
-class Card{
-
+class Card {
   int _number;
   Scan _card_scan;
 

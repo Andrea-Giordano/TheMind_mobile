@@ -1,6 +1,8 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:the_mind/com/kdev/themind/AppColors.dart';
+import 'package:the_mind/com/kdev/themind/Fonts.dart';
 
 class JoinRoomDialog extends StatefulWidget {
   final String description = "Code";
@@ -45,7 +47,6 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
         height: 250,
         decoration: BoxDecoration(
             color: AppColors.dialogBackground,
-            border: Border.all(color: AppColors.dialogBorder, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -129,7 +130,7 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
                     child: Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          color: AppColors.dialogForeground,
+                          color: AppColors.buttonColor,
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       width: 125,
                       constraints: const BoxConstraints(
@@ -140,6 +141,8 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
                         'JOIN',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            fontFamily: Fonts.textFont,
+                            letterSpacing: 1.0,
                             fontSize: 16,
                             color: AppColors.whiteText,
                             fontWeight: FontWeight.bold),

@@ -1,18 +1,17 @@
 import 'Room.dart';
 
-class Lobby{
-
+class Lobby {
   static List<Room> rooms;
 
-  static List<String> getRoomsCodes(){
+  static List<String> getRoomsCodes() {
     return rooms.map<String>((e) => e.code).toList();
   }
 
-  static List<Room> getRooms(){
+  static List<Room> getRooms() {
     return rooms;
   }
 
-  static int getRoomsNumber(){
+  static int getRoomsNumber() {
     return rooms.length;
   }
 }

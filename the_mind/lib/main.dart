@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:the_mind/com/kdev/themind/AppColors.dart';
+import 'package:the_mind/com/kdev/themind/Fonts.dart';
+
 import 'com/kdev/themind/frontend/dialogs/CreateRoomDialog.dart';
 import 'com/kdev/themind/frontend/dialogs/JoinRoomDialog.dart';
 
@@ -35,7 +37,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   BuildContext _appContext;
 
   @override
@@ -62,70 +63,49 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(child: Image.asset("assets/logo.png")),
                 ),
                 SizedBox(height: 15.0),
-                Container(
-                  width: 200,
-                  color: Colors.transparent,
-                  child: RaisedButton(
-                    onPressed: () => {_createNewRoomDialog()},
-                    child: Ink(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: <Color>[
-                            AppColors.buttonGradient1,
-                            AppColors.buttonGradient2
-                          ],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(80.0)),
-                      ),
-                      child: Container(
-                        constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 40.0), // min sizes for Material buttons
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'CREATE ROOM',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: AppColors.whiteText,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                RaisedButton(
+                  color: AppColors.buttonColor,
+                  onPressed: () => {_createNewRoomDialog()},
+                  child: Container(
+                    constraints:
+                        const BoxConstraints(maxWidth: 200.0, maxHeight: 40.0),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'CREATE ROOM',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: Fonts.textFont,
+                          letterSpacing: 1.0,
+                          fontSize: 20,
+                          color: AppColors.whiteText,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
+                  //  ),
                 ),
                 SizedBox(height: 15.0),
-                Container(
-                  width: 200,
-                  color: Colors.transparent,
-                  child: RaisedButton(
-                    onPressed: () => {_joinRoomDialog()},
-                    child: Ink(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: <Color>[
-                            AppColors.buttonGradient1,
-                            AppColors.buttonGradient2
-                          ],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(80.0)),
-                      ),
-                      child: Container(
-                        constraints: const BoxConstraints(
-                            maxWidth: 200.0, minHeight: 40.0),
-                        // min sizes for Material buttons
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'JOIN',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16, color: AppColors
-                              .whiteText, fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                RaisedButton(
+                  color: AppColors.buttonColor,
+                  onPressed: () => {_joinRoomDialog()},
+                  child: Container(
+                    constraints:
+                        const BoxConstraints(maxWidth: 200.0, minHeight: 40.0),
+                    // min sizes for Material buttons
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'JOIN',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: Fonts.textFont,
+                          letterSpacing: 1.0,
+                          fontSize: 20,
+                          color: AppColors.whiteText,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 SizedBox(height: 30),
-              ]
-          ),
+              ]),
         ), // your UI here
       ),
     );
@@ -136,10 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
       barrierDismissible: true,
       context: context,
       builder: (BuildContext context) =>
-          CreateRoomDialog(
-              roomCode: "CODICE",
-              mainContext: _appContext
-          ),
+          CreateRoomDialog(roomCode: "CODICE", mainContext: _appContext),
     );
   }
 
@@ -148,9 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
       barrierDismissible: true,
       context: context,
       builder: (BuildContext context) =>
-          JoinRoomDialog(
-              mainContext: _appContext
-          ),
+          JoinRoomDialog(mainContext: _appContext),
     );
   }
 }
