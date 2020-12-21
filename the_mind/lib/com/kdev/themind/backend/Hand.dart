@@ -1,16 +1,15 @@
 import 'Card.dart';
 
-class Hand{
-
+class Hand {
   List<Card> _cards;
   String _player;
 
-  Hand(player){
+  Hand(player) {
     this._player = player;
     this._cards = List();
   }
 
-  void addCard(card){
+  void addCard(card) {
     this._cards.add(card);
   }
 

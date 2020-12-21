@@ -2,7 +2,6 @@ import 'Level.dart';
 import 'Room.dart';
 
 class Game {
-
   int _num_players;
   int _num_lives;
   int _num_shuriken;

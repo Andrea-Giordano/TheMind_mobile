@@ -1,15 +1,14 @@
-import 'Hand.dart';
 import 'Card.dart';
+import 'Hand.dart';
 import 'Level_Descriptions.dart';
 
 class Level {
-
   String _description;
   List<Hand> _hands;
   Card _deck;
   int _level_number;
 
-  Level(level_number){
+  Level(level_number) {
     this._description = Level_Descriptions.getDescriptions(level_number);
     this._level_number = level_number;
     this._hands = generateHands();
