@@ -3,10 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:the_mind/com/kdev/themind/AppColors.dart';
 import 'package:the_mind/com/kdev/themind/Fonts.dart';
+import 'package:the_mind/com/kdev/themind/Sizes.dart';
 
 class JoinRoomDialog extends StatefulWidget {
-  final String description = "Code";
-
   final BuildContext mainContext;
 
   JoinRoomDialog({
@@ -15,16 +14,14 @@ class JoinRoomDialog extends StatefulWidget {
 
   @override
   _JoinRoomDialogState createState() =>
-      _JoinRoomDialogState(description: description, mainContext: mainContext);
+      _JoinRoomDialogState(mainContext: mainContext);
 }
 
 class _JoinRoomDialogState extends State<JoinRoomDialog> {
-  final String description;
 
   final BuildContext mainContext;
 
-  _JoinRoomDialogState(
-      {@required this.description, @required this.mainContext}) {}
+  _JoinRoomDialogState({@required this.mainContext}) {}
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,7 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
       onWillPop: () async => true,
       child: Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Sizes.dialogRoundness),
         ),
         elevation: 0.0,
         backgroundColor: Colors.transparent,
@@ -47,7 +44,8 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
         height: 250,
         decoration: BoxDecoration(
             color: AppColors.dialogBackground,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Sizes.dialogRoundness))),
         child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -131,10 +129,12 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: AppColors.buttonColor,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(Sizes.buttonRoundness))),
                       width: 125,
                       constraints: const BoxConstraints(
-                          maxWidth: 200.0, minHeight: 40.0),
+                          maxWidth: Sizes.dialogButtonWidth,
+                          minHeight: Sizes.dialogButtonHeight),
                       // min sizes for Material buttons
                       alignment: Alignment.center,
                       child: const Text(
@@ -143,7 +143,7 @@ class _JoinRoomDialogState extends State<JoinRoomDialog> {
                         style: TextStyle(
                             fontFamily: Fonts.textFont,
                             letterSpacing: 1.0,
-                            fontSize: 16,
+                            fontSize: Fonts.dialogButtonFontSize,
                             color: AppColors.whiteText,
                             fontWeight: FontWeight.bold),
                       ),

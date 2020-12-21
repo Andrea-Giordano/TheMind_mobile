@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:the_mind/com/kdev/themind/AppColors.dart';
 import 'package:the_mind/com/kdev/themind/Fonts.dart';
+import 'package:the_mind/com/kdev/themind/Sizes.dart';
 
 import 'com/kdev/themind/frontend/dialogs/CreateRoomDialog.dart';
 import 'com/kdev/themind/frontend/dialogs/JoinRoomDialog.dart';
@@ -67,8 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: AppColors.buttonColor,
                   onPressed: () => {_createNewRoomDialog()},
                   child: Container(
-                    constraints:
-                        const BoxConstraints(maxWidth: 200.0, maxHeight: 40.0),
+                    constraints: const BoxConstraints(
+                        maxWidth: Sizes.mainButtonWidth,
+                        maxHeight: Sizes.mainButtonHeight),
                     alignment: Alignment.center,
                     child: const Text(
                       'CREATE ROOM',
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                           fontFamily: Fonts.textFont,
                           letterSpacing: 1.0,
-                          fontSize: 20,
+                          fontSize: Fonts.mainButtonFontSize,
                           color: AppColors.whiteText,
                           fontWeight: FontWeight.bold),
                     ),
@@ -89,7 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => {_joinRoomDialog()},
                   child: Container(
                     constraints:
-                        const BoxConstraints(maxWidth: 200.0, minHeight: 40.0),
+                    const BoxConstraints(maxWidth: Sizes.mainButtonWidth,
+                        minHeight: Sizes.mainButtonHeight),
                     // min sizes for Material buttons
                     alignment: Alignment.center,
                     child: const Text(
@@ -98,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                           fontFamily: Fonts.textFont,
                           letterSpacing: 1.0,
-                          fontSize: 20,
+                          fontSize: Fonts.mainButtonFontSize,
                           color: AppColors.whiteText,
                           fontWeight: FontWeight.bold),
                     ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:the_mind/com/kdev/themind/AppColors.dart';
 import 'package:the_mind/com/kdev/themind/Fonts.dart';
+import 'package:the_mind/com/kdev/themind/Sizes.dart';
 
 class CreateRoomDialog extends StatefulWidget {
   final String description = "Share code";
@@ -35,7 +36,7 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
       onWillPop: () async => true,
       child: Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Sizes.dialogRoundness),
         ),
         elevation: 0.0,
         backgroundColor: Colors.transparent,
@@ -50,7 +51,8 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
         height: 250,
         decoration: BoxDecoration(
             color: AppColors.dialogBackground,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Sizes.dialogRoundness))),
         child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,7 +67,7 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                   Container(
                       child: Text(description,
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: Fonts.dialogTextFontSize,
                               fontFamily: Fonts.textFont,
                               letterSpacing: 1.0,
                               color: AppColors.whiteText,
@@ -75,12 +77,13 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           color: AppColors.buttonColor,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(Sizes.buttonRoundness))),
                       width: 125,
                       child: Text(
                         "XJ6RT",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: Fonts.dialogTextFieldFontSize,
                             color: AppColors.whiteTextField,
                             letterSpacing: 3.0,
                             fontWeight: FontWeight.bold),
@@ -102,6 +105,32 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  RaisedButton(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: AppColors.buttonColor,
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(Sizes.buttonRoundness))),
+                      width: 125,
+                      constraints: const BoxConstraints(
+                          maxWidth: Sizes.dialogButtonWidth,
+                          minHeight: Sizes.dialogButtonHeight),
+                      // min sizes for Material buttons
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "START",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: Fonts.textFont,
+                            letterSpacing: 1.0,
+                            fontSize: Fonts.dialogButtonFontSize,
+                            color: AppColors.whiteText,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
