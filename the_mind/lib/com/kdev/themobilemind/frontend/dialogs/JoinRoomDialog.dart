@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:the_mind/com/kdev/themind/AppColors.dart';
-import 'package:the_mind/com/kdev/themind/Fonts.dart';
-import 'package:the_mind/com/kdev/themind/Sizes.dart';
+import 'package:the_mind/com/kdev/themobilemind/AppColors.dart';
+import 'package:the_mind/com/kdev/themobilemind/Fonts.dart';
+import 'package:the_mind/com/kdev/themobilemind/Sizes.dart';
 
 class JoinRoomDialog extends StatefulWidget {
   final BuildContext mainContext;

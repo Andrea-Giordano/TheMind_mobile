@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'package:the_mind/com/kdev/themind/AppColors.dart';
-import 'package:the_mind/com/kdev/themind/Fonts.dart';
-import 'package:the_mind/com/kdev/themind/Sizes.dart';
-import 'package:the_mind/com/kdev/themind/Pictures.dart';
+import 'package:the_mind/com/kdev/themobilemind/AppColors.dart';
+import 'package:the_mind/com/kdev/themobilemind/Fonts.dart';
+import 'package:the_mind/com/kdev/themobilemind/Sizes.dart';
+import 'package:the_mind/com/kdev/themobilemind/Pictures.dart';
 
-import 'com/kdev/themind/frontend/dialogs/CreateRoomDialog.dart';
-import 'com/kdev/themind/frontend/dialogs/JoinRoomDialog.dart';
+import 'frontend/dialogs/CreateRoomDialog.dart';
+import 'frontend/dialogs/JoinRoomDialog.dart';
 
 void main() {
   runApp(new MaterialApp(

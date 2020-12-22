@@ -1,14 +1,12 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:the_mind/com/kdev/themind/AppColors.dart';
-import 'package:the_mind/com/kdev/themind/Fonts.dart';
-import 'package:the_mind/com/kdev/themind/Sizes.dart';
+import 'package:the_mind/com/kdev/themobilemind/AppColors.dart';
+import 'package:the_mind/com/kdev/themobilemind/Fonts.dart';
+import 'package:the_mind/com/kdev/themobilemind/Sizes.dart';
+import 'package:the_mind/com/kdev/themobilemind/backend/Room.dart';
 
 class CreateRoomDialog extends StatefulWidget {
   final String description = "Share code";
-  final String roomCode = "XJRT6F";
-
   final BuildContext mainContext;
 
   CreateRoomDialog({
@@ -16,23 +14,30 @@ class CreateRoomDialog extends StatefulWidget {
   });
 
   @override
-  _CreateRoomDialogState createState() => _CreateRoomDialogState(
-      description: description, roomCode: roomCode, mainContext: mainContext);
+  _CreateRoomDialogState createState() =>
+      _CreateRoomDialogState(
+          description: description, mainContext: mainContext);
 }
 
 class _CreateRoomDialogState extends State<CreateRoomDialog> {
-  final String description, roomCode;
+  final String description;
+  Future<String> roomCode;
 
   final BuildContext mainContext;
 
   _CreateRoomDialogState({@required this.description,
-    @required this.roomCode,
     @required this.mainContext}) {}
+
+  @override
+  void initState() {
+    super.initState();
+    roomCode = Room().setCode();
+  }
 
   @override
   Widget build(BuildContext context) {
     return new WillPopScope(
-      onWillPop: () async => true,
+      onWillPop: () async => false,
       child: Dialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Sizes.dialogRoundness),
@@ -80,7 +85,7 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                               Radius.circular(Sizes.buttonRoundness))),
                       width: 125,
                       child: Text(
-                        roomCode,
+                        roomCode.toString(),
                         style: TextStyle(
                             fontSize: Fonts.dialogTextFieldFontSize,
                             color: AppColors.whiteTextField,

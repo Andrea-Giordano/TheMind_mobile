@@ -1,4 +1,4 @@
-package com.kdev.the_mind
+package com.kdev.themobilemind
 
 import io.flutter.embedding.android.FlutterActivity
 
