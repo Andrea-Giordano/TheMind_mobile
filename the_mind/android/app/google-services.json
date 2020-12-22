@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "446106756228",
+    "project_id": "themobilemind-kdev",
+    "storage_bucket": "themobilemind-kdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446106756228:android:7a0fe0e60a95949e158ed1",
+        "android_client_info": {
+          "package_name": "com.kdev.themobilemind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446106756228-1tv2kd08lripnidf8fihq3pujre5fdbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqWk4lJg5oqJErBrCwVR2DsPoYiCWIIlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446106756228-1tv2kd08lripnidf8fihq3pujre5fdbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
