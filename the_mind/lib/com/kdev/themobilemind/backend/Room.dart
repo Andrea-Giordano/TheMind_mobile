@@ -6,13 +6,18 @@ final int roomCodeNumberOfCiphers = 5;
 class Room {
   String _code;
 
-  Future<String> setCode() async {
-    this._code = await getUniqueCode();
+  Future<String> generateCode() async {
+    return await getUniqueCode();
   }
 
-  String get code => _code;
+  set code(String value) {
+    print("value:" + value);
+    _code = value;
+  }
 
-  static String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  String get code => this._code;
+
+  static String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   static Random _rnd = Random();
 
   static Future<String> getUniqueCode() async {

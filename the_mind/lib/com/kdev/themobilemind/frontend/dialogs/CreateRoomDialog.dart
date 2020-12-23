@@ -21,32 +21,53 @@ class CreateRoomDialog extends StatefulWidget {
 
 class _CreateRoomDialogState extends State<CreateRoomDialog> {
   final String description;
-  Future<String> roomCode;
+  String roomCode;
+  Future<bool> codeGenerated;
 
   final BuildContext mainContext;
 
-  _CreateRoomDialogState({@required this.description,
-    @required this.mainContext}) {}
+  _CreateRoomDialogState(
+      {@required this.description, @required this.mainContext}) {}
 
   @override
   void initState() {
     super.initState();
-    roomCode = Room().setCode();
+    Room room = Room();
+    codeGenerated = _generatedRoomCode(room);
+  }
+
+  Future<bool> _generatedRoomCode(Room room) async {
+    roomCode = await room.generateCode();
+    room.code = roomCode;
+    return true;
   }
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
-      onWillPop: () async => false,
-      child: Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Sizes.dialogRoundness),
-        ),
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        child: dialogContent(context),
-      ),
-    );
+    return FutureBuilder<bool>(
+        future: codeGenerated,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            default:
+              return new WillPopScope(
+                onWillPop: () async => false,
+                child: Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(Sizes.dialogRoundness),
+                  ),
+                  elevation: 0.0,
+                  backgroundColor: Colors.transparent,
+                  child: dialogContent(context),
+                ),
+              );
+          }
+        });
   }
 
   dialogContent(BuildContext context) {
@@ -85,7 +106,7 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                               Radius.circular(Sizes.buttonRoundness))),
                       width: 125,
                       child: Text(
-                        roomCode.toString(),
+                        roomCode,
                         style: TextStyle(
                             fontSize: Fonts.dialogTextFieldFontSize,
                             color: AppColors.whiteTextField,

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:the_mind/com/kdev/themobilemind/AppColors.dart';
@@ -5,10 +6,12 @@ import 'package:the_mind/com/kdev/themobilemind/Fonts.dart';
 import 'package:the_mind/com/kdev/themobilemind/Sizes.dart';
 import 'package:the_mind/com/kdev/themobilemind/Pictures.dart';
 
-import 'frontend/dialogs/CreateRoomDialog.dart';
-import 'frontend/dialogs/JoinRoomDialog.dart';
+import 'com/kdev/themobilemind/frontend/dialogs/CreateRoomDialog.dart';
+import 'com/kdev/themobilemind/frontend/dialogs/JoinRoomDialog.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(new MaterialApp(
     title: 'TheMind',
     theme: new ThemeData(primarySwatch: Colors.indigo),
